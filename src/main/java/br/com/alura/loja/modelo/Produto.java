@@ -2,6 +2,7 @@ package br.com.alura.loja.modelo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
@@ -20,6 +21,35 @@ public class Produto {
 
     @Column(name = "preco")
     private BigDecimal price;
+
+    @Column(name = "dataCadastro")
+    private LocalDate registerDate = LocalDate.now();
+
+    @ManyToOne
+    private Categoria categoria;
+
+    public Produto(String name, String description, BigDecimal price, Categoria category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.categoria = category;
+    }
+
+    public LocalDate getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(LocalDate registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Long getId() {
         return id;
