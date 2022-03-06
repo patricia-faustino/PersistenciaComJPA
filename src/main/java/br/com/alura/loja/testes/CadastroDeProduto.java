@@ -19,7 +19,10 @@ public class CadastroDeProduto {
         entityManager.getTransaction().begin();
         entityManager.persist(celulares);
         celulares.setName("XPTO");
-        entityManager.getTransaction().commit();
-        entityManager.close();
+        entityManager.flush();
+        entityManager.clear();
+        celulares = entityManager.merge(celulares);
+        celulares.setName("123");
+        entityManager.flush();
     }
 }
