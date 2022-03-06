@@ -19,4 +19,9 @@ public class CategoriaDao {
     public void atualizar(Categoria categoria) {
         this.em.merge(categoria);
     }
+
+    public void remolver(Categoria categoria) {
+        categoria = this.em.merge(categoria);
+        this.em.remove(categoria);
+    }
 }

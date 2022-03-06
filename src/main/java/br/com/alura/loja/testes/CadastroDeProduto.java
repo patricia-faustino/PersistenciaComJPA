@@ -24,5 +24,7 @@ public class CadastroDeProduto {
         celulares = entityManager.merge(celulares);
         celulares.setName("123");
         entityManager.flush();
+        entityManager.remove(celulares);
+        entityManager.flush();
     }
 }
