@@ -4,6 +4,7 @@ import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CategoriaDao {
     private EntityManager em;
@@ -23,5 +24,14 @@ public class CategoriaDao {
     public void remolver(Categoria categoria) {
         categoria = this.em.merge(categoria);
         this.em.remove(categoria);
+    }
+
+    public Categoria buscarPorId(Long id) {
+        return em.find(Categoria.class, id);
+    }
+
+    public List<Categoria> buscarTodos() {
+        String jpql = "SELECT p FROM Categoria p";
+        return em.createQuery(jpql, Categoria.class).getResultList();
     }
 }
