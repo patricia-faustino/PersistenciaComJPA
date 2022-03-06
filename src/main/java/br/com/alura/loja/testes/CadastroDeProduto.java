@@ -12,19 +12,31 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
-        Categoria celulares = new Categoria("celulares");
+        cadastrarProdutos();
 
         EntityManager entityManager = JPAUtil.getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(entityManager);
+
+        Produto produto = produtoDao.buscarPorId(1l);
+        System.out.println(produto.getPrice());
+
+        produtoDao.buscarTodos().forEach(prdt -> System.out.println(prdt.getPrice()));
+    }
+
+    private static void cadastrarProdutos() {
+        Categoria celulares = new Categoria("CELULARES");
+        Produto celular = new Produto("Xiaomi Redmi", "descrição alternativa", new BigDecimal("800"), celulares );
+
+        EntityManager entityManager = JPAUtil.getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(entityManager);
+        CategoriaDao categoriaDao = new CategoriaDao(entityManager);
 
         entityManager.getTransaction().begin();
-        entityManager.persist(celulares);
-        celulares.setName("XPTO");
-        entityManager.flush();
-        entityManager.clear();
-        celulares = entityManager.merge(celulares);
-        celulares.setName("123");
-        entityManager.flush();
-        entityManager.remove(celulares);
-        entityManager.flush();
+
+        categoriaDao.cadastrar(celulares);
+        produtoDao.cadastrar(celular);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
 }
