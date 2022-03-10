@@ -1,10 +1,9 @@
 package br.com.alura.loja.testes;
 
-import br.com.alura.loja.dao.CategoriaDao;
 import br.com.alura.loja.dao.ProdutoDao;
-import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
+import br.com.alura.loja.util.DataUtl;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -12,7 +11,7 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
-        cadastrarProdutos();
+        DataUtl.cadastrarProdutos();
 
         EntityManager entityManager = JPAUtil.getEntityManager();
         ProdutoDao produtoDao = new ProdutoDao(entityManager);
@@ -30,20 +29,5 @@ public class CadastroDeProduto {
         System.out.println(precoDoProduto);
     }
 
-    private static void cadastrarProdutos() {
-        Categoria celulares = new Categoria("CELULARES");
-        Produto celular = new Produto("Xiaomi Redmi", "descrição alternativa", new BigDecimal("800"), celulares );
 
-        EntityManager entityManager = JPAUtil.getEntityManager();
-        ProdutoDao produtoDao = new ProdutoDao(entityManager);
-        CategoriaDao categoriaDao = new CategoriaDao(entityManager);
-
-        entityManager.getTransaction().begin();
-
-        categoriaDao.cadastrar(celulares);
-        produtoDao.cadastrar(celular);
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
 }

@@ -21,7 +21,7 @@ public class CategoriaDao {
         this.em.merge(categoria);
     }
 
-    public void remolver(Categoria categoria) {
+    public void remover(Categoria categoria) {
         categoria = this.em.merge(categoria);
         this.em.remove(categoria);
     }

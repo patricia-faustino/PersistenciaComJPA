@@ -22,14 +22,13 @@ public class Produto {
     @Column(name = "preco")
     private BigDecimal price;
 
-    @Column(name = "dataCadastro")
+    @Column(name = "data_Cadastro")
     private LocalDate registerDate = LocalDate.now();
 
     @ManyToOne
     private Categoria categoria;
 
-    public Produto() {
-    }
+    public Produto() {}
 
     public Produto(String name, String description, BigDecimal price, Categoria category) {
         this.name = name;

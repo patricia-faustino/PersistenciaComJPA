@@ -14,9 +14,7 @@ public class Categoria {
     @Column(name = "nome")
     private String name;
 
-    public Categoria() {
-
-    }
+    public Categoria() {}
 
     public Categoria(String name) {
         this.name = name;
