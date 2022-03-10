@@ -1,7 +1,6 @@
 package br.com.alura.loja.dao;
 
-import br.com.alura.loja.modelo.Categoria;
-import br.com.alura.loja.modelo.Produto;
+import br.com.alura.loja.modelo.entity.Categoria;
 
 import javax.persistence.EntityManager;
 import java.util.List;

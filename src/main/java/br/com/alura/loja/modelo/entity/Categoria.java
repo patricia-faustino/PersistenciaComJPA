@@ -1,4 +1,4 @@
-package br.com.alura.loja.modelo;
+package br.com.alura.loja.modelo.entity;
 
 import javax.persistence.*;
 

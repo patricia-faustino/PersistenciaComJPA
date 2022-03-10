@@ -1,4 +1,4 @@
-package br.com.alura.loja.modelo;
+package br.com.alura.loja.modelo.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
+@NamedQuery(name = "Produto.produtosPorCategoria",
+query = "SELECT p FROM Produto p, Categoria c WHERE c = p.categoria AND c.name = :nomeCategoria")
 public class Produto {
 
     @Column(name = "id")

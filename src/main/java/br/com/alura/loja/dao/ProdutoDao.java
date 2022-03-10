@@ -1,7 +1,6 @@
 package br.com.alura.loja.dao;
 
-import br.com.alura.loja.modelo.Categoria;
-import br.com.alura.loja.modelo.Produto;
+import br.com.alura.loja.modelo.entity.Produto;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -44,8 +43,7 @@ public class ProdutoDao {
     }
 
     public List<Produto> buscarProdutosPorCategoria(String nomeCategoria) {
-        String jpql = "SELECT p FROM Produto p, Categoria c WHERE c = p.categoria AND c.name = :nomeCategoria";
-        return em.createQuery(jpql, Produto.class)
+        return em.createNamedQuery("Produto.produtosPorCategoria", Produto.class)
                 .setParameter("nomeCategoria", nomeCategoria)
                 .getResultList();
     }

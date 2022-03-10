@@ -1,7 +1,7 @@
 package br.com.alura.loja.testes;
 
 import br.com.alura.loja.dao.ProdutoDao;
-import br.com.alura.loja.modelo.Produto;
+import br.com.alura.loja.modelo.entity.Produto;
 import br.com.alura.loja.util.JPAUtil;
 import br.com.alura.loja.util.DataUtl;
 
