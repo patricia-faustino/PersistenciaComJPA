@@ -27,7 +27,7 @@ public class Produto {
     @Column(name = "data_Cadastro")
     private LocalDate registerDate = LocalDate.now();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
 
     public Produto() {}
