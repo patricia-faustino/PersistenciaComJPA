@@ -1,6 +1,7 @@
 package br.com.alura.loja.dao;
 
 import br.com.alura.loja.modelo.entity.Categoria;
+import br.com.alura.loja.modelo.entity.CategoriaId;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -25,8 +26,8 @@ public class CategoriaDao {
         this.em.remove(categoria);
     }
 
-    public Categoria buscarPorId(Long id) {
-        return em.find(Categoria.class, id);
+    public Categoria buscarPorId(CategoriaId categoriaId) {
+        return em.find(Categoria.class, categoriaId);
     }
 
     public List<Categoria> buscarTodos() {

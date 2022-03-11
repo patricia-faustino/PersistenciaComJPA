@@ -6,25 +6,17 @@ import javax.persistence.*;
 @Table(name = "categorias")
 public class Categoria {
 
-    @Column(name = "id")
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private CategoriaId id;
 
-    @Column(name = "nome")
-    private String name;
+    public Categoria(){}
 
-    public Categoria() {}
-
-    public Categoria(String name) {
-        this.name = name;
+    public Categoria(String nome) {
+        this.id = new CategoriaId(nome, "xpto");
     }
 
     public String getName() {
-        return name;
+        return id.getName();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

@@ -83,18 +83,11 @@ public class DataUtl {
         CategoriaDao categoriaDao = new CategoriaDao(entityManager);
         ClienteDao clienteDao = new ClienteDao(entityManager);
 
-
-
         Pedido pedido = new Pedido(cliente);
-
 
         PedidoDao pedidoDao = new PedidoDao(entityManager);
 
-
-        BigDecimal valorTotalVendido = pedidoDao.valorTotalVendido();
-
         entityManager.getTransaction().begin();
-
         categoriaDao.cadastrar(celulares);
         categoriaDao.cadastrar(mesaBanho);
         categoriaDao.cadastrar(eletronicos);

@@ -1,5 +1,7 @@
 package br.com.alura.loja.modelo.entity;
 
+import br.com.alura.loja.modelo.DadosPessoais;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,17 +13,13 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome")
-    private String name;
-
-    @Column(name = "cpf")
-    private String cpf;
+    @Embedded
+    private DadosPessoais dadosPessoais;
 
     public  Cliente() {}
 
     public Cliente(String name, String cpf) {
-        this.name = name;
-        this.cpf = cpf;
+        this.dadosPessoais = new DadosPessoais(name, cpf);
     }
 
     public Long getId() {
@@ -29,18 +27,14 @@ public class Cliente {
     }
 
     public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return this.dadosPessoais.getName();
     }
 
     public String getCpf() {
-        return cpf;
+        return this.dadosPessoais.getCpf();
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public DadosPessoais getDadosPessoais() {
+        return dadosPessoais;
     }
 }
